@@ -55,25 +55,47 @@ document.getElementById('loginForm').addEventListener('submit', function(e) {
 
 // Check if user is logged in
 function isLoggedIn() {
-    return sessionStorage.getItem('currentUser') !== '';
+    const currentUser = sessionStorage.getItem('currentUser');
+    return currentUser !== null && currentUser !== '';
 }
 
 // Get current user
 function getCurrentUser() {
     const userStr = sessionStorage.getItem('currentUser');
-    return userStr ? JSON.parse(userStr) : null;
+    return userStr && userStr !== '' ? JSON.parse(userStr) : null;
 }
 
 // Logout function
 function logout() {
-    // Only clear the current user session, not the localStorage data
-    sessionStorage.setItem('currentUser', '');
+    // Clear the current user session
+    sessionStorage.removeItem('currentUser');
     window.location.href = '../index.html';
 }
 
-// Protect dashboard pages
-if (window.location.pathname.includes('dashboard')) {
-    if (!isLoggedIn()) {
-        window.location.href = 'login.html';
+// Protect dashboard pages - Stronger protection
+(function protectDashboard() {
+    if (window.location.pathname.includes('dashboard') &&
+        !window.location.pathname.includes('dashboard-no-auth')) {
+        
+        // Force immediate check
+        if (!isLoggedIn()) {
+            console.log('Not logged in, redirecting to login page');
+            window.location.replace('login.html');
+        }
     }
-}
+})();
+
+// Add event listener to check login status periodically
+document.addEventListener('DOMContentLoaded', function() {
+    if (window.location.pathname.includes('dashboard') &&
+        !window.location.pathname.includes('dashboard-no-auth')) {
+        
+        // Check login status every 5 seconds
+        setInterval(function() {
+            if (!isLoggedIn()) {
+                console.log('Session expired, redirecting to login page');
+                window.location.replace('login.html');
+            }
+        }, 5000);
+    }
+});
