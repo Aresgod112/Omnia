@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Despre noi - Management Cotizații</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .about-section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+        
+        .about-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+        
+        .about-section p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+        
+        .team-section {
+            background-color: white;
+            padding: 3rem 2rem;
+        }
+        
+        .team-section h2 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 2.5rem;
+        }
+        
+        .team-members {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+        }
+        
+        .team-member {
+            text-align: center;
+            max-width: 250px;
+        }
+        
+        .team-member img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+        }
+        
+        .team-member h3 {
+            margin-bottom: 0.5rem;
+        }
+        
+        .team-member p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .social-links a {
+            color: var(--text-color);
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>Management Cotizații</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Acasă</a></li>
+                <li><a href="despre-noi.html" class="active">Despre noi</a></li>
+                <li><a href="contact.html">Contactează-ne</a></li>
+                <li><a href="login.html" class="login-btn">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="about-section">
+            <h2>Despre Noi</h2>
+            <p>Bine ați venit la <strong>Management Cotizații</strong>, platforma dedicată gestionării eficiente a cotizațiilor pentru organizații, asociații și cluburi. Misiunea noastră este să simplificăm procesul de administrare a cotizațiilor, oferind o soluție intuitivă și ușor de utilizat.</p>
+            
+            <p>Înființată în 2025, compania noastră a dezvoltat această platformă ca răspuns la nevoile organizațiilor care se confruntă cu provocări în gestionarea cotizațiilor membrilor. Sistemul nostru permite adăugarea facilă a membrilor, înregistrarea cotizațiilor și generarea de rapoarte detaliate.</p>
+            
+            <p>Valorile noastre fundamentale includ:</p>
+            <ul style="margin-left: 2rem; margin-bottom: 1.5rem;">
+                <li>Simplitate și ușurință în utilizare</li>
+                <li>Securitatea datelor</li>
+                <li>Transparență</li>
+                <li>Suport client de calitate</li>
+                <li>Inovație continuă</li>
+            </ul>
+            
+            <p>Ne străduim constant să îmbunătățim platforma noastră, adăugând funcționalități noi și optimizând experiența utilizatorilor. Feedback-ul clienților noștri este esențial în acest proces, ajutându-ne să creăm un produs care răspunde cu adevărat nevoilor dumneavoastră.</p>
+        </section>
+        
+        <section class="team-section">
+            <h2>Echipa Noastră</h2>
+            <div class="team-members">
+                <div class="team-member">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Alexandru Popescu">
+                    <h3>Alexandru Popescu</h3>
+                    <p>Fondator & CEO</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Maria Ionescu">
+                    <h3>Maria Ionescu</h3>
+                    <p>Lead Developer</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Andrei Dumitrescu">
+                    <h3>Andrei Dumitrescu</h3>
+                    <p>UX/UI Designer</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-dribbble"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Management Cotizații. Toate drepturile rezervate.</p>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

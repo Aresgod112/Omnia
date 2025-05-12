@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Management Cotizații</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>Management Cotizații</h2>
+                <div class="user-info">
+                    <i class="fas fa-user-circle"></i>
+                    <span id="userDisplayName">Admin</span>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="#" class="active" data-page="home">
+                            <i class="fas fa-home"></i> Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" data-page="adauga">
+                            <i class="fas fa-user-plus"></i> Adaugă
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" data-page="cotizatii">
+                            <i class="fas fa-money-bill-wave"></i> Cotizații
+                        </a>
+                    </li>
+                    <li class="logout">
+                        <a href="#" id="logoutBtn">
+                            <i class="fas fa-sign-out-alt"></i> Deconectare
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-content">
+            <header class="dashboard-header">
+                <button id="toggleSidebar" class="toggle-sidebar">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h1 id="pageTitle">Dashboard</h1>
+            </header>
+
+            <!-- Home Page -->
+            <section id="homePage" class="dashboard-page active">
+                <div class="dashboard-welcome">
+                    <h2>Bine ați venit în panoul de administrare!</h2>
+                    <p>Utilizați meniul din stânga pentru a naviga prin diferitele secțiuni ale aplicației.</p>
+                </div>
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <i class="fas fa-users"></i>
+                        <div class="stat-info">
+                            <h3>Total Membri</h3>
+                            <p id="totalMembers">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-money-bill-wave"></i>
+                        <div class="stat-info">
+                            <h3>Total Cotizații</h3>
+                            <p id="totalPayments">0 RON</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Adauga Page -->
+            <section id="adaugaPage" class="dashboard-page">
+                <div class="form-container">
+                    <h2>Adaugă Membru Nou</h2>
+                    <form id="addUserForm">
+                        <div class="form-group">
+                            <label for="lastName">Nume</label>
+                            <input type="text" id="lastName" name="lastName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="firstName">Prenume</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Telefon</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Adresă</label>
+                            <textarea id="address" name="address" rows="3" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>BI/CI</label>
+                            <div class="radio-group">
+                                <label class="radio-label">
+                                    <input type="radio" name="idType" value="BI" required> BI
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="idType" value="CI" checked required> CI
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="idSeries">Seria</label>
+                            <input type="text" id="idSeries" name="idSeries" maxlength="2" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="idNumber">Număr</label>
+                            <input type="text" id="idNumber" name="idNumber" pattern="[0-9]*" inputmode="numeric" required>
+                            <small>Introduceți doar cifre</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="company">Companie</label>
+                            <input type="text" id="company" name="company">
+                        </div>
+                        <div class="form-group">
+                            <label for="joinDate">Data înregistrării</label>
+                            <input type="date" id="joinDate" name="joinDate" required>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Adaugă Membru</button>
+                        </div>
+                    </form>
+                    <div id="addUserMessage" class="message"></div>
+                </div>
+            </section>
+
+            <!-- Cotizatii Page -->
+            <section id="cotizatiiPage" class="dashboard-page">
+                <div class="search-container">
+                    <div class="search-box">
+                        <input type="text" id="searchUser" placeholder="Caută după nume...">
+                        <button id="searchBtn" class="btn">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="members-list">
+                    <h2>Lista Membri</h2>
+                    <div class="table-responsive">
+                        <table id="membersTable">
+                            <thead>
+                                <tr>
+                                    <th>Nume</th>
+                                    <th>Prenume</th>
+                                    <th>Email</th>
+                                    <th>Telefon</th>
+                                    <th>Companie</th>
+                                    <th>Data înregistrării</th>
+                                    <th>Total Cotizații</th>
+                                    <th>Acțiuni</th>
+                                </tr>
+                            </thead>
+                            <tbody id="membersTableBody">
+                                <!-- Members will be loaded here dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="noMembersMessage" class="message">Nu există membri înregistrați.</div>
+                </div>
+            </section>
+
+            <!-- User Profile Page -->
+            <section id="userProfilePage" class="dashboard-page">
+                <div class="profile-header">
+                    <button id="backToList" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i> Înapoi la listă
+                    </button>
+                    <h2>Profil Membru</h2>
+                </div>
+                
+                <div class="profile-container">
+                    <div class="profile-info">
+                        <h3><span id="profileLastName">Nume</span> <span id="profileFirstName">Prenume</span></h3>
+                        <p><i class="fas fa-envelope"></i> <span id="profileEmail">email@example.com</span></p>
+                        <p><i class="fas fa-phone"></i> <span id="profilePhone">0123456789</span></p>
+                        <p><i class="fas fa-map-marker-alt"></i> <span id="profileAddress">Adresa</span></p>
+                        <p><i class="fas fa-id-card"></i> <span id="profileIdType">CI</span> Seria <span id="profileIdSeries">XX</span> Nr. <span id="profileIdNumber">123456</span></p>
+                        <p><i class="fas fa-building"></i> <span id="profileCompany">Companie</span></p>
+                        <p><i class="fas fa-calendar-alt"></i> Data înregistrării: <span id="profileJoinDate">01.01.2025</span></p>
+                    </div>
+                    
+                    <div class="profile-actions">
+                        <button id="addPaymentBtn" class="btn btn-primary">
+                            <i class="fas fa-plus"></i> Adaugă Cotizație
+                        </button>
+                    </div>
+                    
+                    <div id="addPaymentForm" class="payment-form hidden">
+                        <h3>Adaugă Cotizație Nouă</h3>
+                        <form id="paymentForm">
+                            <div class="form-group">
+                                <label for="paymentAmount">Sumă (RON)</label>
+                                <input type="number" id="paymentAmount" name="paymentAmount" min="1" step="1" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="paymentDate">Data</label>
+                                <input type="date" id="paymentDate" name="paymentDate" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="paymentNotes">Observații</label>
+                                <textarea id="paymentNotes" name="paymentNotes" rows="2"></textarea>
+                            </div>
+                            <div class="form-actions">
+                                <button type="button" id="cancelPayment" class="btn btn-secondary">Anulează</button>
+                                <button type="submit" class="btn btn-primary">Salvează</button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <div class="payments-history">
+                        <h3>Istoric Cotizații</h3>
+                        <div class="table-responsive">
+                            <table id="paymentsTable">
+                                <thead>
+                                    <tr>
+                                        <th>Data</th>
+                                        <th>Sumă</th>
+                                        <th>Observații</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="paymentsTableBody">
+                                    <!-- Payments will be loaded here dynamically -->
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="noPaymentsMessage" class="message">Nu există cotizații înregistrate.</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="../js/auth.js"></script>
+    <script src="../js/dashboard.js"></script>
+    <script src="../js/users.js"></script>
+    <script src="../js/payments.js"></script>
+</body>
+</html>
