@@ -76,6 +76,21 @@
                         </div>
                     </div>
                 </div>
+                
+                <div class="data-management">
+                    <h3>Gestionare Date</h3>
+                    <p>Pentru a preveni pierderea datelor la curățarea cache-ului browserului, puteți exporta și importa datele:</p>
+                    <div class="data-actions">
+                        <button id="exportDataBtn" class="btn btn-primary">
+                            <i class="fas fa-download"></i> Exportă Date
+                        </button>
+                        <label for="importDataFile" class="btn btn-secondary">
+                            <i class="fas fa-upload"></i> Importă Date
+                        </label>
+                        <input type="file" id="importDataFile" accept=".json" style="display: none;">
+                    </div>
+                    <div id="dataMessage" class="message"></div>
+                </div>
             </section>
 
             <!-- Adauga Page -->
@@ -250,5 +265,6 @@
     <script src="../js/dashboard.js"></script>
     <script src="../js/users.js"></script>
     <script src="../js/payments.js"></script>
+    <script src="../js/data-manager.js"></script>
 </body>
 </html>
