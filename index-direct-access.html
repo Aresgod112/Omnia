@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Management Cotizații</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .direct-access {
+            background-color: #e74c3c;
+            color: white !important;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        .direct-access:hover {
+            background-color: #c0392b;
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>Management Cotizații</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index-direct-access.html" class="active">Acasă</a></li>
+                <li><a href="pages/despre-noi.html">Despre noi</a></li>
+                <li><a href="pages/contact.html">Contactează-ne</a></li>
+                <li><a href="pages/login.html" class="login-btn">Login</a></li>
+                <li><a href="pages/dashboard-no-auth.html" class="direct-access">Acces Direct</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h2>Sistem de Management al Cotizațiilor</h2>
+                <p>Platformă simplă și eficientă pentru gestionarea cotizațiilor membrilor.</p>
+                <div class="btn-group">
+                    <a href="pages/login.html" class="btn">Autentificare</a>
+                    <a href="pages/dashboard-no-auth.html" class="btn" style="background-color: #e74c3c;">Acces Direct Dashboard</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="feature">
+                <i class="fas fa-users"></i>
+                <h3>Gestionare Membri</h3>
+                <p>Adăugați și gestionați cu ușurință membrii organizației dumneavoastră.</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-money-bill-wave"></i>
+                <h3>Evidența Cotizațiilor</h3>
+                <p>Țineți evidența cotizațiilor lunare pentru fiecare membru.</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-search"></i>
+                <h3>Căutare Rapidă</h3>
+                <p>Găsiți rapid informații despre membri și cotizațiile lor.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Management Cotizații. Toate drepturile rezervate.</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
