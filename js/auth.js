@@ -66,6 +66,7 @@ function getCurrentUser() {
 
 // Logout function
 function logout() {
+    // Only clear the current user session, not the localStorage data
     sessionStorage.setItem('currentUser', '');
     window.location.href = '../index.html';
 }

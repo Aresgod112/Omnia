@@ -1,4 +1,4 @@
-// Initialize members if not exists
+// Get members from localStorage or initialize if not exists
 if (!localStorage.getItem('members')) {
     localStorage.setItem('members', JSON.stringify([]));
 }

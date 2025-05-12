@@ -33,5 +33,18 @@ function initializeLocalStorage() {
     // Initialize members if not exists
     if (!localStorage.getItem('members')) {
         localStorage.setItem('members', JSON.stringify([]));
+    } else {
+        // Ensure members data is valid JSON
+        try {
+            const members = JSON.parse(localStorage.getItem('members'));
+            if (!Array.isArray(members)) {
+                // Reset if not an array
+                localStorage.setItem('members', JSON.stringify([]));
+            }
+        } catch (e) {
+            // Reset if invalid JSON
+            console.error('Invalid members data in localStorage, resetting:', e);
+            localStorage.setItem('members', JSON.stringify([]));
+        }
     }
 }
